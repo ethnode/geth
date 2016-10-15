@@ -3,7 +3,7 @@ FROM alpine:3.4
 RUN \
   sed -i -e 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && \
   apk add --update go git make gcc musl-dev         && \
-  git clone -b v1.4.17 https://github.com/ethereum/go-ethereum && \
+  git clone -b v1.4.18 https://github.com/ethereum/go-ethereum && \
   (cd go-ethereum && make geth)                     && \
   cp go-ethereum/build/bin/geth /geth               && \
   apk del go git make gcc musl-dev                  && \
