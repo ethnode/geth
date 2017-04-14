@@ -2,7 +2,7 @@ FROM alpine:3.5
 
 RUN \
   apk add --update go git make gcc musl-dev linux-headers ca-certificates && \
-  git clone --depth 1 -b v1.5.9 https://github.com/ethereum/go-ethereum && \
+  git clone --depth 1 -b v1.6.0 https://github.com/ethereum/go-ethereum && \
   (cd go-ethereum && make geth) && \
   cp go-ethereum/build/bin/geth /geth && \
   apk del go git make gcc musl-dev linux-headers && \
@@ -14,4 +14,4 @@ VOLUME /root/.ethereum
 
 COPY run.sh static-nodes.json /
 
-ENTRYPOINT ["/run.sh", "--rpc", "--rpcaddr", "0.0.0.0", "--fast", "--maxpeers", "150"]
+ENTRYPOINT ["/run.sh", "--rpc", "--rpcaddr", "0.0.0.0", "--syncmode=fast", "--maxpeers", "150"]
