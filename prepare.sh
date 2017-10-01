@@ -10,4 +10,3 @@ fi
 
 grep -v '#' /static-nodes.json > /root/.ethereum/static-nodes.json
 
-exec /geth $@

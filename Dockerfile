@@ -12,6 +12,6 @@ EXPOSE 30303
 
 VOLUME /root/.ethereum
 
-COPY run.sh static-nodes.json /
+COPY entrypoint.sh prepare.sh static-nodes.json /
 
-ENTRYPOINT ["/run.sh", "--rpc", "--rpcaddr", "0.0.0.0", "--syncmode=fast", "--maxpeers", "150"]
+ENTRYPOINT ["/entrypoint.sh", "--rpc", "--rpcaddr", "0.0.0.0", "--syncmode=fast", "--maxpeers", "150"]
